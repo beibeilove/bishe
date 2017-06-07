@@ -1,0 +1,15 @@
+{template "content","header"}
+<div class="module-out module-out1" style="background: #fff;">
+    {template "content","left"}
+    <div class="module-box">
+        <h4 style="color: #214D7C;">您现在的位置:<a href="index.php">首页</a>-><a href="index.php?m=content&c=index&a=lists&catid={$catid}">{$CATEGORYS[$CAT[catid]][catname]}</a>->{if $CATEGORYS[$CAT[catid]][parentid]=0}<a href="index.php?m=content&c=index&a=lists&catid={$catid}">{$CATEGORYS[$CAT[catid]][catname]}</a>->{/if}{$title}</h4>
+        <div class="content">
+        <strong>{$title}</strong><br>
+            <div class="mess">
+            <span>作者:{$username}</span><span>发布时间:{$updatetime}</span><br>
+            </div>
+        </div>
+        {$content}
+    </div>
+</div>
+{template "content","footer"}

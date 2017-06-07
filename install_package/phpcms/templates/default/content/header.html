@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>山西省翼城中学{if $catname}-{$catname}{elseif $CATEGORYS[$CAT[parentid]][catname]}{$CATEGORYS[$CAT[catid]][catname]}{/if}</title>
+	<link rel="stylesheet" href="{CSS_PATH}mycss/bootstrap.min.css">
+	<link rel="stylesheet" href="{CSS_PATH}mycss/animate.min.css">
+	<link rel="stylesheet" href="{CSS_PATH}mycss/swiper.min.css">
+	<link rel="stylesheet" href="{CSS_PATH}mycss/index.css">
+	<script src="{JS_PATH}myjs/jquery1.js"></script>
+	<script src="{JS_PATH}myjs/swiper.min.js"></script>
+	<script src="{JS_PATH}myjs/index.js"></script>
+
+</head>
+<body>
+<div class="body">
+	<nav>
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="1180" height="280">
+			<param name="movie" value="http://www.sxyczx.com.cn/760x88123.swf">
+			<param name="quality" value="high">
+			<embed src="{CSS_PATH}swf/760x88123.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="1180" height="280">
+		</object>
+		<div class="r" style="width: 100%;height: 40px;line-height: 40px;position:relative;"><a href="index.php?m=search" class="search" style="float: left;width: 200px;height: 30px;border: 1px solid #dcdcdc;border-radius:5px;line-height: 30px;text-align: right;padding-right:10px;">| 搜索</a><section class="music">
+			<marquee behavior="scroll" direction="left" width="1160" height="40" onmouseover="this.stop()" onmouseout="this.start()"  scrollamount="5">
+				<div class="misict">周传雄 - 冬天的秘密</div>
+			</marquee>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</section><script type="text/javascript">document.write('<iframe src="{APP_PATH}index.php?m=member&c=index&a=mini&forward='+encodeURIComponent(location.href)+'&siteid={get_siteid()}" allowTransparency="true"  width="300" height="24" frameborder="0" scrolling="no" style="float: right"></iframe>')</script></div>
+		<div class="msg">
+			<ul class="music-list">
+				<!--{pc:get sql="SELECT * FROM v9_music where catid='47' order by listorder DESC" cache="3600" return="data" moreinfo="1"}-->
+				{pc:content action="lists" catid="47" order="listorder DESC" num="14" moreinfo="1"}
+				{loop $data $r}
+				<li class="editmusic" src="{$r['music']}">{$r["title"]}</li>
+				{/loop}
+				{/pc}
+				<div class="control">
+					<audio id="audio" autoplay controls loop>
+						<source src="http://localhost/yczx/install_package/uploadfile/2017/0605/20170605082741367.mp3">
+					</audio>
+				</div>
+			</ul>
+
+		</div>
+		<ul class="yiji">
+			{pc:content  action="category" catid="0" num="20" order="listorder ASC"}
+			{loop $data $r}
+			<li>
+				{if $r["catid"]==9}
+				<a href="index.php">{$r["catname"]}</a>
+				{elseif $r["child"]!=0}
+				<a>{$r["catname"]}</a>
+				{else}
+				<a href="{$r['url']}">{$r["catname"]}</a>
+				{/if}
+				<ul class="erji">
+					{pc:content  action="category" catid="$r['catid']" num="20" order="listorder ASC"}
+					{loop $data $v}
+					<li><a href="{$v['url']}">{$v["catname"]}</a></li>
+					{/loop}
+					{/pc}
+				</ul>
+			</li>
+			{/loop}
+			{/pc}
+		</ul>
+	</nav>
+	<script>
+        $('.music').click(function(){
+            $('.msg').slideToggle();
+        });
+        $('.music-list li').dblclick(function(e){
+            e.preventDefault();
+            $('audio').load();
+            $(".misict").html($(this).html());
+            $('audio source').attr("src",$(this).attr("src").split("|")[0]);
+            $('.msg').slideUp();
+        })
+        $('.msg').dblclick(function(){
+            $('.msg').slideUp();
+        })
+	</script>

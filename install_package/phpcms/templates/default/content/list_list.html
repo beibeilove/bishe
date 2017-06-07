@@ -1,0 +1,28 @@
+{template "content","header"}
+<div class="module-out module-out1" style="background: #fff;">
+    {template "content","left"}
+    <div class="module-box" style="position: relative">
+
+        <h4 style="color: #214D7C;">您现在的位置:<a href="index.php">首页</a>->{if $CATEGORYS[$CAT[catid]][parentid]!=0}<a href="index.php?m=content&c=index&a=lists&catid={$parentid}">{$CATEGORYS[$CAT[parentid]][catname]}</a>->{/if}{$catname}</h4>
+        <div class="list-group">
+            {pc:content action="lists" catid="$catid" order="listorder DESC" num="14" moreinfo="1" page="$page"}
+            {php $a=0;}
+            {loop $data $v}
+            <a href="{$v['url']}" class="list-group-item"><span class="badge"><?php echo date("Y-m-d H:i:s",$v["updatetime"]);?></span>{$v["title"]}</a>
+            {php $a++;}
+
+            {/loop}
+            {/pc}
+        </div>
+        <p align="center" style="font-size: 16px;">
+            <a href="">首页</a>
+            <a href="">上一页</a>
+            <a href="">下一页</a>
+            页次：1/<span id="page"></span>页 共有<span id="num">{php echo $a;}</span>条信息 转到
+            <input type="number" min="1" max="5" value="1">页
+            <input type="button" value="跳转">
+        </p>
+    </div>
+</div>
+
+{template "content","footer"}

@@ -1,0 +1,26 @@
+{template "content","header"}
+<link href="{CSS_PATH}download.css" rel="stylesheet" type="text/css" />
+<!--main-->
+<div class="main module-out module-out1">
+	<!--left_bar-->
+    {template "content","left"}
+    <div class="module-box">
+        <h4 style="color: #214D7C;">您现在的位置:<a href="index.php">首页</a>->{if $CATEGORYS[$CAT[catid]][parentid]!=0}<a href="index.php?m=content&c=index&a=lists&catid={$parentid}">{$CATEGORYS[$CAT[parentid]][catname]}</a>->{/if}{$catname}</h4>
+    	<!--最新下载-->
+        <div class="box mg_b10">
+            <ul class="content news-photo col4">
+			{pc:content action="lists" catid="$catid" num="4"  thumb="1" order="id DESC"}
+			{loop $data $r}
+            	<li>
+                    <div class="img-wrap" style="display: flex;justify-content: flex-start;">
+                        <a href="{$r[url]}"><img src="{thumb($r[thumb],110,90)}" width="110" height="90"></a>
+                    </div>
+                    <a href="{$r[url]}" title="{$r[title]}" style="color:{$r[style]}">{str_cut($r[title],24,'')}</a>
+                </li>
+			{/loop}	
+			{/pc}
+            </ul>
+        </div>
+    </div>
+</div>
+{template "content","footer"}

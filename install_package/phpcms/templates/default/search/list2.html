@@ -1,0 +1,50 @@
+{template 'search', 'header'}
+<link rel="stylesheet" href="{CSS_PATH}mycss/bootstrap.min.css">
+<link rel="stylesheet" href="{CSS_PATH}mycss/index.css">
+
+	<div class="module-out module-out1">
+		{template "search","left"}
+		<div class="c wrap module-box">
+			<div style="width: 100%;height: 50px;">
+				<div class="l">
+					<div class="sr_frm_box">
+						<form name="search" type="get">
+							<div class="sr_frmipt">
+								<input type="hidden" name="m" value="search"/>
+								<input type="hidden" name="c" value="index"/>
+								<input type="hidden" name="a" value="init"/>
+								<input type="hidden" name="typeid" value="{$typeid}" id="typeid"/>
+								<input type="hidden" name="siteid" value="{$siteid}" id="siteid"/>
+								<input type="text" name="q" class="ipt" id="q" value="{$search_q}">
+								<div class="sp" id="aca">▼</div><input type="submit" class="ss_btn" value="搜 索"></div>
+						</form>
+						<div id="sr_infos" class="wrap sr_infoul">
+						</div>
+					</div>
+					<div class="jg">获得约 {$totalnums} 条结果 （用时{sprintf("%01.2f", $execute_time)} 秒）</div>
+				</div>
+			</div>
+			<div class="brd1s"></div>
+			<div class="list-group">
+				{loop $data $i $r}
+					<a href="{$r['url']}" class="list-group-item"><span class="badge"><?php echo date("Y-m-d H:i:s",$r["updatetime"]);?></span>{$r["title"]}</a>
+
+				{/loop}
+				{if empty($data)}未找到结果{/if}
+			</div>
+			<div id="pages" class="text-c mg_t20">{$pages}</div>
+			{if $setting['relationenble']}
+			<div class="wrap sgch"><strong>相关搜索：</strong>
+			{loop $relation $k $v}
+			<a href="?m=search&c=index&a=init&typeid={$typeid}&siteid={$siteid}&q={$v['keyword']}">{$v['keyword']}</a>
+			{/loop}
+			</div>
+			{/if}
+		</div>
+	</div>
+<script type="text/javascript" src="{JS_PATH}search_history.js"></script>
+{if $setting['suggestenable']}
+<script type="text/javascript" src="{JS_PATH}jquery.suggest.js"></script>
+<script type="text/javascript" src="{JS_PATH}search_suggest.js"></script>
+{/if}
+{template 'search', 'footer'}

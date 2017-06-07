@@ -1,0 +1,145 @@
+{template "content","header"}
+<div class="adver">
+    <div class="adver-icon">
+        &#xe606;
+    </div>
+    <marquee behavior="scroll" direction="left" width="1160" height="20" onmouseover="this.stop()" onmouseout="this.start()"  scrollamount="5">
+        <div class="adver-box">
+            <a href="">翼城中学关于开展第六届英语周活动的通知</a>
+            <a href="">翼城中学招聘启事</a>
+            <a href="">翼城中学澡堂招标</a>
+            <a href="">翼城中学超市招标</a>
+        </div>
+    </marquee>
+</div>
+<div class="banner-box">
+    <div class="banner swiper-container">
+        <div class="swiper-wrapper">
+            <a class="swiper-slide" href=""><img src="{IMG_PATH}myimg/20071129726740.jpg" alt=""></a>
+            <a class="swiper-slide" href=""><img src="{IMG_PATH}myimg/20071129927108.jpg" alt=""></a>
+            <a class="swiper-slide" href=""><img src="{IMG_PATH}myimg/20081141642859.jpg" alt=""></a>
+            <a class="swiper-slide" href=""><img src="{IMG_PATH}myimg/200811416148506.jpg" alt=""></a>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+<!--模块-->
+<div class="module-out">
+    {template "content","left"}
+    <div class="module-box">
+        <div class="module">
+            <div class="title"><h2>学校概况</h2><a href="index.php?m=content&c=index&a=lists&catid=21">more</a></div>
+            <div class="con">
+                <ul>
+                    {pc:get sql="SELECT * FROM v9_news where catid='21' order by listorder DESC" cache="3600" return="data" moreinfo="1"}
+                    {loop $data $r}
+                    <li>
+                        <a href="{$r['url']}" class="aLink">
+                            <img src="{IMG_PATH}myimg/22.jpg" alt="">
+                            <span>翼城中学</span>
+                        </a>
+                        <p>{$r["description"]}</p>
+                    </li>
+                    {/loop}
+                    {/pc}
+                </ul>
+            </div>
+        </div>
+        <div class="module">
+            <div class="title"><h2>学校新闻</h2><a href="index.php?m=content&c=index&a=lists&catid=26">more</a></div>
+            <div class="con">
+                <ul>
+                    {pc:get sql="SELECT * FROM v9_news  where catid=26 order by id DESC" cache="3600" num="5" return="data"}
+                    {loop $data $r}
+                    <li><a href="{$r['url']}">{$r["title"]}</a></li>
+                    {/loop}
+                    {/pc}
+                </ul>
+            </div>
+        </div>
+        <div class="module">
+            <div class="title"><h2>教育新闻</h2><a href="index.php?m=content&c=index&a=lists&catid=27">more</a></div>
+            <div class="con">
+                <ul>
+                    {pc:get sql="SELECT * FROM v9_news  where catid=27 order by id DESC" cache="3600" num="5" return="data"}
+                    {loop $data $r}
+                    <li><a href="{$r['url']}">{$r["title"]}</a></li>
+                    {/loop}
+                    {/pc}
+                </ul>
+            </div>
+        </div>
+        <div class="module">
+            <div class="title"><h2>德育之窗</h2><a href="index.php?m=content&c=index&a=lists&catid=12">more</a></div>
+            <div class="con">
+                <ul>
+                    {pc:get sql="SELECT * FROM v9_news  where catid=12 order by id DESC" cache="3600" num="5" return="data"}
+                    {loop $data $r}
+                    <li><a href="{$r['url']}">{$r["title"]}</a></li>
+                    {/loop}
+                    {/pc}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="module-box">
+        <div class="module">
+            <div class="title"><h2>校长致辞</h2><a href="index.php?m=content&c=index&a=lists&catid=25">more</a></div>
+            <div class="con">
+                <ul>
+                    {pc:get sql="SELECT * FROM v9_news where catid='25' order by listorder DESC" cache="3600" return="data" moreinfo="1"}
+                    {loop $data $r}
+                    <li>
+                        <p>{$r["description"]}</p>
+                    </li>
+                    {/loop}
+                    {/pc}
+                </ul>
+            </div>
+        </div>
+        <div class="module">
+            <div class="title"><h2>教学资源</h2><a href="index.php?m=content&c=index&a=lists&catid=16">more</a></div>
+            <div class="con">
+                <ul>
+                    {pc:get sql="SELECT * FROM v9_news  where catid=16 order by id DESC" cache="3600" num="5" return="data"}
+                    {loop $data $r}
+                    <li><a href="{$r['url']}">{$r["title"]}</a></li>
+                    {/loop}
+                    {/pc}
+                </ul>
+            </div>
+        </div>
+        <div class="module">
+            <div class="title">
+                <h2>校友风采</h2><a href="index.php?m=content&c=index&a=lists&catid=17">more</a>
+            </div>
+            <div class="con">
+                {pc:get sql="SELECT * FROM v9_category where catid=17 order by listorder DESC" cache="3600" num="1" return="data"}
+                {loop $data $r}
+                <a href="{$r['url']}"><img src="{$r['image']}" alt="" width="300"></a>
+                {/loop}
+                {/pc}
+            </div>
+        </div>
+        <div class="module">
+            <div class="title"><h2>下载中心</h2><a href="index.php?m=content&c=index&a=lists&catid=19">more</a></div>
+            <div class="con" style="height:200px">
+                <ul>
+                    {pc:get sql="SELECT * FROM v9_download  where catid=19 order by id DESC" cache="3600" num="1" return="data"}
+                    {loop $data $r}
+                    <li><a href="{$r['url']}"><img src="{$r['thumb']}" alt=""></a></li>
+                    {/loop}
+                    {/pc}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 3000,//可选选项，自动滑动
+        effect : 'cube',
+        pagination : '.swiper-pagination',
+    })</script>
+{template "content","footer"}

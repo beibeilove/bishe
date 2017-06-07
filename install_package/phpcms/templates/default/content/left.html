@@ -1,0 +1,50 @@
+<div class="module-box">
+    <div class="module">
+        <div class="title"><h2>学校公告</h2><a href="index.php?m=content&c=index&a=lists&catid=43">more</a></div>
+        <div class="con">
+            <ul>
+                {pc:get sql="SELECT * FROM v9_news  where catid=43 order by id DESC" cache="3600" num="5" return="data"}
+                {loop $data $r}
+                <li><a href="{$r['url']}">{$r["title"]}</a></li>
+                {/loop}
+                {/pc}
+            </ul>
+        </div>
+    </div>
+    <div class="module">
+        <div class="title">
+            <h2>学校工作</h2><a href="index.php?m=content&c=index&a=lists&catid=14">more</a>
+        </div>
+        <div class="con">
+            {pc:content  action="category" catid="14" num="20" order="listorder ASC"}
+            {loop $data $r}
+            <a href="{$r['url']}"><img src="{$r['image']}" alt=""></a>
+            {/loop}
+            {/pc}
+        </div>
+    </div>
+    <div class="module">
+        <div class="title">
+            <h2>校园风光</h2><a href="index.php?m=content&c=index&a=lists&catid=13">more</a>
+        </div>
+        <div class="con">
+            {pc:get sql="SELECT * FROM v9_category where catid=13 order by listorder DESC" cache="3600" num="1" return="data"}
+            {loop $data $r}
+            <a href="{$r['url']}"><img src="{$r['image']}" alt="" width="300"></a>
+            {/loop}
+            {/pc}
+        </div>
+    </div>
+    <div class="module">
+        <div class="title">
+            <h2>校园活动</h2><a href="index.php?m=content&c=index&a=lists&catid=44">more</a>
+        </div>
+        <div class="con">
+            {pc:get sql="SELECT * FROM v9_category where catid=44 order by listorder DESC" cache="3600" num="1" return="data"}
+            {loop $data $r}
+            <a href="{$r['url']}"><img src="{$r['image']}" alt="" width="300"></a>
+            {/loop}
+            {/pc}
+        </div>
+    </div>
+</div>

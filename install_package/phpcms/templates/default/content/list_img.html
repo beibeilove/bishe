@@ -1,0 +1,31 @@
+{template "content","header"}
+<div class="module-out module-out1" style="background: #fff;">
+    {template "content","left"}
+    <div class="module-box">
+
+        <h4 style="color: #214D7C;">您现在的位置:<a href="index.php">首页</a>->{$catname}</h4>
+        <ul class="list_img">
+            {pc:content action="lists" catid="$catid" order="listorder DESC" num="" moreinfo="1"}
+            {php $a=0;}
+            {loop $data $v}
+            <li>
+                <a href="{$v['url']}">
+                    <img src="{$v['thumb']}" alt="">
+                    <p>{$v["title"]}</p>
+                </a>
+                {php $a++;}
+            </li>
+            {/loop}
+            {/pc}
+        </ul>
+        <p align="center" style="font-size: 16px;">
+            <a href="">首页</a>
+            <a href="">上一页</a>
+            <a href="">下一页</a>
+            页次：1/<span id="page"></span>页 共有<span id="num">{php echo $a;}</span>条信息 转到
+            <input type="number" min="1" max="5" value="1">页
+            <input type="button" value="跳转">
+        </p>
+    </div>
+</div>
+{template "content","footer"}

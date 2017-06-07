@@ -1,0 +1,47 @@
+<div class="module-box">
+    <div class="module">
+        <div class="title"><h2>学校公告</h2><a href="index.php?m=content&c=index&a=lists&catid=43">more</a></div>
+        <div class="con">
+            <ul>
+                {pc:get sql="SELECT * FROM v9_news  where catid='43'" order="id DESC" cache="3600" num="7" return="data"}
+                {loop $data $r}
+                <li><a href="{$r['url']}">{$r["title"]}</a></li>
+                {/loop}
+                {/pc}
+            </ul>
+        </div>
+    </div>
+    <div class="module">
+        <div class="title">
+            <h2>学校工作</h2><a href="">more</a>
+        </div>
+        <div class="con">
+            <a href=""><img src="{IMG_PATH}myimg/71.jpg" alt=""></a>
+            <a href=""><img src="{IMG_PATH}myimg/72.jpg" alt=""></a>
+            <a href=""><img src="{IMG_PATH}myimg/73.jpg" alt=""></a>
+            <a href=""><img src="{IMG_PATH}myimg/74.jpg" alt=""></a>
+        </div>
+    </div>
+    <div class="module">
+        <div class="title">
+            <h2>学校工作</h2><a href="">more</a>
+        </div>
+        <div class="con">
+            <a href=""><img src="{IMG_PATH}myimg/71.jpg" alt=""></a>
+            <a href=""><img src="{IMG_PATH}myimg/72.jpg" alt=""></a>
+            <a href=""><img src="{IMG_PATH}myimg/73.jpg" alt=""></a>
+            <a href=""><img src="{IMG_PATH}myimg/74.jpg" alt=""></a>
+        </div>
+    </div>
+    <div class="module">
+        <div class="title">
+            <h2>学校工作</h2><a href="">more</a>
+        </div>
+        <div class="con">
+            <a href=""><img src="{IMG_PATH}myimg/71.jpg" alt=""></a>
+            <a href=""><img src="{IMG_PATH}myimg/72.jpg" alt=""></a>
+            <a href=""><img src="{IMG_PATH}myimg/73.jpg" alt=""></a>
+            <a href=""><img src="{IMG_PATH}myimg/74.jpg" alt=""></a>
+        </div>
+    </div>
+</div>
